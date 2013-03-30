@@ -65,26 +65,25 @@ strong {
 
 </style>
     
-<script src="jquery-1.8.0.min.js"></script>
 <script src='http://localhost:3001/socket.io/socket.io.js"></script>
 <script src='happen.js'></script>
 
 <script type='text/javascript'>
 
 window.onload = function() {
-  var slideNumElem = $('#slide-number');
-  var index2 = 1;
+  var slideNumElem = document.getElementById('slide-number');
+  var index = 1;
   var socket = io.connect('http://localhost:3001');
 
   socket.on('receive', function (data) {
     if (data.dir === 1) {
       go(Math.min(s.length - 1, ++cur));
-      index2 += 1 ;
-      slideNumElem.text(index2);
+      index += 1 ;
+      slideNumElem.innerHTML = index;
     } else {
       go(Math.max(0, --cur));
-      index2 -= 1 ;
-      slideNumElem.text(index2);
+      index -= 1 ;
+      slideNumElem.innerHTML = index;
     }
   });
 
@@ -141,8 +140,8 @@ window.onload = function() {
 
       var index = 1;
       var time = 14;
-      var timeElem = $('#time');
-      var slideNumElem = $('#slide-number');
+      var timeElem = document.getElementById('time');
+      var slideNumElem = document.getElementById('slide-number');
       var interval2 = null;
 
       function start() {
@@ -154,7 +153,7 @@ window.onload = function() {
           if(index === 21) { 
             window.clearInterval(intervalID) 
             window.clearInterval(intervalID2) 
-            timeElem.text('0');
+            timeElem.innerHTML = 0;
           } else {
             go(Math.min(s.length - 1, ++cur));
           };
@@ -163,8 +162,8 @@ window.onload = function() {
 
       function restartTimer() {
         intervalID2 = setInterval(function() {
-          timeElem.text(time);
-          slideNumElem.text(index);
+          timeElem.innerHTML = time;
+          slideNumElem.innerHTML = index;
           time -= 1;
           if(time === 0) { 
             window.clearInterval(intervalID2) 
