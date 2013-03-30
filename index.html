@@ -83,6 +83,9 @@ window.onload = function() {
     } else {
       go(Math.max(0, --cur));
       index -= 1 ;
+      if (index === 0 ) {
+        index = 1; 
+      }
       slideNumElem.innerHTML = index;
     }
   });
