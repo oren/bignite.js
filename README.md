@@ -14,4 +14,4 @@ I also added support for [bigclicker](https://github.com/tmcw/bigclicker) - cont
     npm install
     node server.js
 
-And access <pre>your laptop ip</pre>:3001 from your mobile phone. now you can move next and back with your phone.
+And access `your laptop ip:3001` from your mobile phone. now you can move next and back with your phone.
